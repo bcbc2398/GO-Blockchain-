@@ -7,24 +7,24 @@ import (
 )
 
 type Block struct {
-	timestamp		time.Time
-	transactions	[]string
-	prevHash		[]byte
-	Hash			[]byte
+	timestamp time.Time
+	transaction []string
+	prevHash []byte
+	Hash []byte
 }
 
 func main() {
-	genesisTransactions := []string{"Tony sent Montana 50 bitcoin", "Montana sent Tony 30 bitcoin"}
+	genesisTransactions := []string{"Tony sent Montana 50 MATIC", "Montana sent Tony 30 MATIC"}
 	genesisBlock := NewBlock(genesisTransactions, []byte{})
 	fmt.Println("--- First Block ---")
 	printBlockInformation(genesisBlock)
 
-	block2Transactions := []string{"Ricky sent Tony 30 bitcoin"}
+	block2Transactions := []string{"Ricky sent Tony 30 MATIC"}
 	block2 := NewBlock(block2Transactions, genesisBlock.Hash)
 	fmt.Println("--- Second Block ---")
 	printBlockInformation(block2)
 
-	block3Transactions := []string{"Montana sent Tony 45 bitcoin", "Tony sent Montana 10 bitcoin"}
+	block3Transactions := []string{"Montana sent Tony 45 MATIC", "Tony sent Montana 10 MATIC"}
 	block3 := NewBlock(block3Transactions, block2.Hash)
 	fmt.Println("--- Third Block ---")
 	printBlockInformation(block3)
